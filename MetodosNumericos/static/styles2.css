@@ -1,0 +1,259 @@
+/* Variables personalizadas para colores y efectos */
+:root {
+    --color-primario: #6a11ff;
+    --color-secundario: #ff2d55;
+    --degradado-primario: linear-gradient(135deg, #6a11ff 0%, #2575fc 100%);
+    --degradado-secundario: linear-gradient(45deg, #ff2d55 0%, #ff6b6b 100%);
+    --sombra-neu: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+    --borde-vidrio: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Estructura principal mejorada */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background: linear-gradient(160deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    border: var(--borde-vidrio);
+    box-shadow: var(--sombra-neu);
+}
+
+.seccion {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: var(--borde-vidrio);
+    transition: transform 0.3s ease;
+}
+
+.seccion:hover {
+    transform: translateY(-5px);
+}
+
+/* Controles futuristas */
+.controles {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Lista de solución interactiva */
+.solucion {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 15px;
+    font-size: 1.2em;
+}
+
+.solucion li {
+    padding: 15px 20px;
+    background: linear-gradient(90deg, rgba(106,17,255,0.1) 0%, transparent 100%);
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+    counter-increment: step-counter;
+}
+
+.solucion li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    background: var(--degradado-primario);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.solucion li:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg, rgba(106,17,255,0.2) 0%, transparent 100%);
+}
+
+/* Efectos para pasos y gráficos */
+.pasos-container.visible,
+.grafico-container.visible {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    flex-direction: row;
+    justify-content: space-between; /* Mantiene separación equitativa */
+    align-items: center;
+    gap: 20px;
+    animation: slideFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pasos-container,
+.grafico-container {
+    display: none; /* Oculto por defecto */
+    width: 100%; /* Asegura que ocupen todo el ancho disponible */
+}
+.pasos-container.visible {
+    display: flex;
+    
+}
+.grafico-container.visible {
+    display: flex;
+    flex-direction: column; /* Asegura que el gráfico ocupe todo el ancho */
+    align-items: center; /* Centra el gráfico horizontalmente */
+    justify-content: center; /* Centra el gráfico verticalmente */
+    width: 100%; /* Asegura que el gráfico ocupe todo el ancho disponible */
+    max-width: 800px; /* Limita el ancho máximo del gráfico */
+    margin: 0 auto; /* Centra el gráfico en la página */ 
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: var(--borde-vidrio);
+    transition: transform 0.3s ease;
+}
+/* Gráficos con estilo moderno */                  
+.grafico {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.grafico:hover {
+    transform: scale(1.02);
+}
+
+/* Botones con efecto 3D */
+.boton {
+    position: relative;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.boton.primario {
+    background: var(--degradado-primario);
+    color: white;
+    box-shadow: 0 5px 15px rgba(106,17,255,0.3);
+}
+
+.boton.primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(106,17,255,0.4);
+}
+
+.boton.primario::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.6s;
+}
+
+.boton.primario:hover::after {
+    left: 100%;
+}
+
+.boton:not(.primario) {
+    background: var(--degradado-secundario);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255,45,85,0.3);
+}
+
+/* Animaciones mejoradas */
+@keyframes slideFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablas con estilo moderno */
+table {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background: white;
+}
+
+th {
+    background: var(--degradado-primario);
+    color: white;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 12px;
+    background: rgba(248,249,250,0.8);
+    transition: background 0.3s ease;
+}
+
+tr:hover td {
+    background: rgba(106,17,255,0.05);
+}
+
+/* Efecto de acordeón para secciones */
+.seccion.acordeon {
+    cursor: pointer;
+    position: relative;
+}
+
+.seccion.acordeon::after {
+    content: '▼';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.seccion.acordeon.activo::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Indicador de progreso personalizado */
+.progreso-container {
+    height: 10px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progreso-barra {
+    height: 100%;
+    background: var(--degradado-primario);
+    width: 0;
+    transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}

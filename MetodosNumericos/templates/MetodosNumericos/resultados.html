@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+    <link rel="stylesheet" href="{% static 'styles2.css' %}">
+    <script src="{% static 'script1.js' %}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado usando {{ metodo }}</h1>
+        
+        <div class="seccion">
+            <h2>Solución:</h2>
+            <ul class="solucion">
+                {% for val in solucion %}
+                    <li>{{ val|floatformat:4 }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% if metodo == 'gauss' or metodo == 'gauss_jordan' %}
+            <div class="seccion">
+                <div class="controles">
+                    <button id="togglePasos" class="boton">Mostrar/Ocultar Pasos</button>
+                </div>
+                <div class="pasos-container">
+                    {% for paso in pasos %}
+                        <div class="paso">
+                            <h3>Paso {{ forloop.counter }}</h3>
+                            <table>
+                                {% for fila in paso %}
+                                    <tr>
+                                        {% for valor in fila %}
+                                            <td>{{ valor|floatformat:2 }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if grafico_convergencia %}
+            <div class="seccion">
+                <div class="controles">
+                    <button class="boton toggle-grafico">Mostrar Gráfico de Convergencia</button>
+                </div>
+                <div class="grafico-container">
+                    <img src="data:image/png;base64,{{ grafico_convergencia }}" class="grafico" />
+                </div>
+            </div>
+        {% endif %}
+
+        {% if grafico_comparacion %}
+            <div class="seccion">
+                <div class="controles">
+                    <button class="boton toggle-grafico">Mostrar Comparación con Solución Exacta</button>
+                </div>
+                <div class="grafico-container">
+                    <img src="data:image/png;base64,{{ grafico_comparacion }}" class="grafico" />
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="botones-container">
+            <a href="{% url 'resolver' %}" class="boton primario">Hacer otro cálculo</a>
+        </div>
+    </div>
+</body>
+</html>
