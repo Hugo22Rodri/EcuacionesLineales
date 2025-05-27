@@ -1,9 +1,9 @@
 /* Variables personalizadas para colores y efectos */
 :root {
     --color-primario: #6a11ff;
-    --color-secundario: #ff2d55;
-    --degradado-primario: linear-gradient(135deg, #6a11ff 0%, #2575fc 100%);
-    --degradado-secundario: linear-gradient(45deg, #ff2d55 0%, #ff6b6b 100%);
+    --color-secundario: #13ef55;
+    --degradado-primario: linear-gradient(135deg, #6a11ff 0%, #87b3ff 100%);
+    --degradado-secundario: linear-gradient(45deg, #331aee 0%, #19c5f9 100%);
     --sombra-neu: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
     --borde-vidrio: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -16,14 +16,14 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    background: linear-gradient(160deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(160deg, #6baff4 0%, #e9ecef 100%);
     border-radius: 20px;
     border: var(--borde-vidrio);
     box-shadow: var(--sombra-neu);
 }
 
 .seccion {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(187, 247, 235, 0.8);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
@@ -42,9 +42,9 @@
     display: flex;
     gap: 15px;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(227, 248, 227, 0.9);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(10, 238, 246, 0.05);
 }
 
 /* Lista de solución interactiva */
@@ -74,7 +74,7 @@
     width: 35px;
     height: 35px;
     background: var(--degradado-primario);
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -94,7 +94,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(15, 5, 16, 0.9);
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     flex-direction: row;
@@ -121,7 +121,7 @@
     max-width: 800px; /* Limita el ancho máximo del gráfico */
     margin: 0 auto; /* Centra el gráfico en la página */ 
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(130, 255, 222, 0.9);
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     border: var(--borde-vidrio);
@@ -183,7 +183,7 @@
 .boton:not(.primario) {
     background: var(--degradado-secundario);
     color: white;
-    box-shadow: 0 5px 15px rgba(255,45,85,0.3);
+    box-shadow: 0 5px 15px rgba(51, 44, 45, 0.3);
 }
 
 /* Animaciones mejoradas */
@@ -203,12 +203,12 @@ table {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    background: white;
+    background: rgb(176, 137, 255);
 }
 
 th {
     background: var(--degradado-primario);
-    color: white;
+    color: rgb(38, 11, 213);
     padding: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -216,7 +216,7 @@ th {
 
 td {
     padding: 12px;
-    background: rgba(248,249,250,0.8);
+    background: rgba(208, 227, 247, 0.8);
     transition: background 0.3s ease;
 }
 
