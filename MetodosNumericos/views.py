@@ -36,6 +36,8 @@ def resolver_sistema(request):
                     sol, pasos = gauss_jordan(A.copy(), b.copy())
                     contexto['pasos'] = [p.tolist() for p in pasos]
                 
+                solucion_python = [float(x) for x in sol]
+                
                 # Comparación con solución exacta
                 try:
                     x_exacta = np.linalg.solve(A, b)
@@ -49,7 +51,8 @@ def resolver_sistema(request):
                 except:
                     pass
                 
-                contexto['solucion'] = sol.tolist()
+                # Usar la solución convertida a float nativo
+                contexto['solucion'] = solucion_python
                 return render(request, 'MetodosNumericos/resultados.html', contexto)
             except Exception as e:
                 form.add_error(None, str(e))

@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,21 +12,13 @@
 <body>
     <div class="container">
         <h1>Resultado usando {{ metodo }}</h1>
-        
+
         <div class="seccion">
             <h2>Solución:</h2>
             <ul class="solucion">
-                <li>x = {{ solucion.0|floatformat:4 }}</li>
-                <li>y = {{ solucion.1|floatformat:4 }}</li>
-                {% if solucion|length > 2 %}
-                    <li>z = {{ solucion.2|floatformat:4 }}</li>
-                {% endif %}
-                {% if solucion|length > 3 %}
-                    <li>w = {{ solucion.3|floatformat:4 }}</li>
-                {% endif %}
-                {% if solucion|length > 4 %}
-                    <li>v = {{ solucion.4|floatformat:4 }}</li>
-                {% endif %} 
+                {% for val in solucion %}
+                    <li>{{ forloop.counter0|variable_letter }} = {{ val|floatformat:"-4" }}</li>
+                {% endfor %}
             </ul>
         </div>
 
@@ -38,15 +31,10 @@
                     {% for paso in pasos %}
                         <div class="paso">
                             <h3>Paso {{ forloop.counter }}</h3>
-                            <table>
-                                {% for fila in paso %}
-                                    <tr>
-                                        {% for valor in fila %}
-                                            <td>{{ valor|floatformat:2 }}</td>
-                                        {% endfor %}
-                                    </tr>
-                                {% endfor %}
-                            </table>
+                            <pre>
+                            {% for fila in paso %}[ {% for valor in fila|slice:":-1" %}{{ valor|floatformat:"-4" }}  {% endfor %}| {{ fila|last|floatformat:"-4" }} ]
+                            {% endfor %}
+                            </pre>
                         </div>
                     {% endfor %}
                 </div>

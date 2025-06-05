@@ -41,4 +41,4 @@ def eliminacion_gaussiana(A, b):
         # 2. Divide por el coeficiente diagonal
         x[i] = (aug[i, -1] - aug[i, i+1:n].dot(x[i+1:])) / aug[i, i]
     
-    return x, steps  # Retorna solución y registros de pasos intermedios
+    return x, steps  
