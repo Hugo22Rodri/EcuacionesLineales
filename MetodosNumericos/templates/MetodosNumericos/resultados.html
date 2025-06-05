@@ -17,7 +17,7 @@
             <h2>Solución:</h2>
             <ul class="solucion">
                 {% for val in solucion %}
-                    <li>{{ forloop.counter0|variable_letter }} = {{ val|floatformat:"-4" }}</li>
+                    <li>{{ forloop.counter0|variable_letter }} = {{ val|floatformat:"-4"|cut:".0000"|cut:".000"|cut:".00"|cut:".0"  }}</li>
                 {% endfor %}
             </ul>
         </div>

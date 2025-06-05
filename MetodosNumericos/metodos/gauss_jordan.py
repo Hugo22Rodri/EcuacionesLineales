@@ -9,7 +9,7 @@ def gauss_jordan(A, b):
         # Pivoteo: se busca la fila con el mayor valor absoluto en la columna actual para mejorar la estabilidad numerica
         max_row = np.argmax(np.abs(aug[i:, i])) + i  # Determina la fila con el mayor valor en la columna i
         aug[[i, max_row]] = aug[[max_row, i]]        # Intercambia la fila actual con la fila del pivote
-        steps.append(aug.copy())                   
+        #steps.append(aug.copy())                   
         
         # Escalonar: normalizamos la fila del pivote dividiendola por el valor del pivote
         pivot = aug[i, i]               # Obtenemos el pivote de la fila actual
