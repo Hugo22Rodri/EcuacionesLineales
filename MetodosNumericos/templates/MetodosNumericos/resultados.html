@@ -15,9 +15,17 @@
         <div class="seccion">
             <h2>Solución:</h2>
             <ul class="solucion">
-                {% for val in solucion %}
-                    <li>{{ val|floatformat:4 }}</li>
-                {% endfor %}
+                <li>x = {{ solucion.0|floatformat:4 }}</li>
+                <li>y = {{ solucion.1|floatformat:4 }}</li>
+                {% if solucion|length > 2 %}
+                    <li>z = {{ solucion.2|floatformat:4 }}</li>
+                {% endif %}
+                {% if solucion|length > 3 %}
+                    <li>w = {{ solucion.3|floatformat:4 }}</li>
+                {% endif %}
+                {% if solucion|length > 4 %}
+                    <li>v = {{ solucion.4|floatformat:4 }}</li>
+                {% endif %} 
             </ul>
         </div>
 
