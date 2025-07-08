@@ -3,15 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPasos = document.getElementById('togglePasos');
     const pasosContainer = document.querySelector('.pasos-container');
     if (btnPasos && pasosContainer) {
-        pasosContainer.style.display = 'none'; // Oculta los pasos por defecto
+        pasosContainer.classList.remove('visible');
         btnPasos.addEventListener('click', () => {
-            if (pasosContainer.style.display === 'none') {
-                pasosContainer.style.display = 'block';
-                btnPasos.textContent = 'Ocultar Pasos';
-            } else {
-                pasosContainer.style.display = 'none';
-                btnPasos.textContent = 'Mostrar/Ocultar Pasos';
-            }
+            pasosContainer.classList.toggle('visible');
+            btnPasos.textContent = pasosContainer.classList.contains('visible') ? 'Ocultar Pasos' : 'Mostrar/Ocultar Pasos';
         });
     }
 
@@ -19,14 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.toggle-grafico').forEach(boton => {
         const grafico = boton.closest('.seccion').querySelector('.grafico-container');
         if (grafico) {
-            grafico.style.display = 'none'; // Oculta el gráfico por defecto
+            grafico.classList.remove('visible');
             boton.addEventListener('click', () => {
-                if (grafico.style.display === 'none') {
-                    grafico.style.display = 'block';
+                grafico.classList.toggle('visible');
+                if (grafico.classList.contains('visible')) {
                     boton.textContent = 'Ocultar Gráfico';
                 } else {
-                    grafico.style.display = 'none';
-                    // Cambia el texto según el tipo de gráfico
                     if (boton.textContent.includes('Comparación')) {
                         boton.textContent = 'Mostrar Comparación con Solución Exacta';
                     } else {

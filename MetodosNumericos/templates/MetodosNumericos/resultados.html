@@ -41,6 +41,18 @@
             </div>
         {% endif %}
 
+        {# Sección para la explicación de la IA #}
+        {% if explicacion_ia %}
+            <div class="seccion">
+              <div class="controles">
+                <button id="toggleIA" class="boton">Explicacion de los pasos </button>
+             </div>  
+                <div class="explicacion-ia" id="explicacionIA">
+                    <p>{{ explicacion_ia|linebreaks }}</p>
+                </div>
+            </div>
+        {% endif %}
+
         {% if grafico_convergencia %}
             <div class="seccion">
                 <div class="controles">
@@ -67,5 +79,21 @@
             <a href="{% url 'resolver' %}" class="boton primario">Hacer otro cálculo</a>
         </div>
     </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const btnIA = document.getElementById('toggleIA');
+    const explicacionIA = document.getElementById('explicacionIA');
+    if (btnIA && explicacionIA) {
+        btnIA.addEventListener('click', function() {
+            if (explicacionIA.style.display === 'none' || explicacionIA.style.display === '') {
+                explicacionIA.style.display = 'block';
+            } else {
+                explicacionIA.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>

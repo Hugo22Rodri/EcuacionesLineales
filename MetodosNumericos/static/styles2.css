@@ -257,3 +257,30 @@ tr:hover td {
     width: 0;
     transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
+
+.seccion-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-doble {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.pasos-container.visible,
+.explicacion-ia.visible {
+    flex: 1;
+    background: rgba(241, 248, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+.explicacion-ia.visible {
+    background: rgba(250, 255, 236, 0.85);
+}
