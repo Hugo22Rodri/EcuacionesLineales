@@ -1,0 +1,128 @@
+/* Estilos del formulario */
+form {
+    background-color: hsl(180, 17%, 98%);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 50%;
+    min-width: 300px;
+    margin-left:0;
+    margin-right: 0; /* Centra el formulario en la página */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #343a40;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f7f7;
+}
+
+/* Estilos de la gráfica */
+#graficaImg {
+    margin-top: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    display: none; /* Oculta la gráfica por defecto */
+}
+
+#graficaImg.mostrar {
+    display: block;
+}
+
+/* Estilos del botón para la gráfica */
+#toggleGraficaBtn {
+    background-color: #28a745; /* Un color verde para el botón de la gráfica */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#toggleGraficaBtn:hover {
+    background-color: #1e7e34;
+}
+
+.formulario-con-imagen form {
+    float: left; /* El formulario flota a la izquierda */
+    width: 45%; /* Ajusta el ancho según necesites */
+    margin-right: 1%; /* Espacio entre el formulario y la imagen */
+    /* ... otros estilos del formulario ... */
+}
+
+.formulario-con-imagen .imagen-container {
+    float: left; /* La imagen flota a la izquierda (o 'right' si prefieres) */
+    width: 50%; /* Ajusta el ancho según necesites */
+}
+
+.formulario-con-imagen .imagen-container img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Evita espacios extra debajo de la imagen */
+}
+
+/* Opcional: Para que el contenedor 'formulario-con-imagen' se expanda correctamente */
+.formulario-con-imagen::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+body {
+    background-image: url("../images/portada.jpg"); /* Ruta relativa a la carpeta CSS */
+    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen al fondo */
+    background-position: center; /* Centra la imagen */
+}

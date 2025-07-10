@@ -15,9 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
-from MetodosNumericos import views
+# mi_proyecto_django/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('', views.resolver_sistema, name='resolver'),
+    path('admin/', admin.site.urls),
+    # By including 'MetodosNumericos.urls' at the project's root (''),
+    # your 'presentacion_app' view will be served as the site's homepage.
+    path('', include('MetodosNumericos.urls')),
 ]

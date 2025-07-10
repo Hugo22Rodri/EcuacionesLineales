@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Tarjetas 3D interactivas de métodos numéricos: Bisección">
+    <meta name="keywords" content="métodos numéricos, matemáticas, cálculo, bisección">
+    <meta name="author" content="HMJ">
+
+    <header class="hero-header">
+        <div class="hero-content">
+            <h1 class="hero-title">MÉTODOS NUMÉRICOS</h1>
+        </div>
+    </header>
+    
+    <title>Métodos Numéricos</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" 
+            integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" 
+            rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'MetodosNumericos/../css/portada.css' %}"> 
+    
+    <meta property="og:title" content="Métodos Numéricos | Tarjetas 3D Interactivas">
+    <meta property="og:description" content="Visualización interactiva de métodos numéricos con tarjetas 3D">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com">
+    <meta property="og:image" content="https://tusitio.com/preview.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@tuusuario">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="card animate__animated animate__fadeInUp">
+        <img src="https://picsum.photos/350/200?random=1" alt="Método de Bisección" class="card-image">
+        <div class="card-content">
+            <h2 class="card-title animate__animated animate__fadeInDown">Bisección</h2>
+            <p class="card-description animate__animated animate__fadeIn">Método numérico para encontrar raíces de funciones continuas en un intervalo dado.</p>
+            <a href="{% url 'MetodosNumericos:calculo_B' %}" class="card-link">
+                <i class="fas fa-calculator"></i> Calcular
+            </a>
+        </div>
+    </div>
+    
+    <div class="card animate__animated animate__fadeInUp">
+        <img src="https://picsum.photos/350/200?random=2" alt="Eliminacion Guassiana & Gauss Jordan" class="card-image">
+        <div class="card-content">
+            <h2 class="card-title animate__animated animate__fadeInDown">Eliminacion Guassiana & Gauss Jordan</h2>
+            <p class="card-description animate__animated animate__fadeIn">Algoritmo eficiente para aproximar raíces de funciones utilizando derivadas.</p>
+            <a href="{% url 'MetodosNumericos:resolver' %}" class="card-link">
+                <i class="fas fa-calculator"></i> Calcular
+            </a>
+        </div>
+    </div>
+    
+    <div class="card animate__animated animate__fadeInUp">
+        <img src="https://picsum.photos/350/200?random=3" alt="interpolaciones" class="card-image">
+        <div class="card-content">
+            <h2 class="card-title animate__animated animate__fadeInDown">Interpolaciones</h2>
+            <p class="card-description animate__animated animate__fadeIn">Método que aproxima raíces sin necesidad de calcular derivadas de la función.</p>
+            <a href="#" class="card-link">
+                <i class="fas fa-calculator"></i> Calcular
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -8,6 +8,12 @@ from .metodos.gauss import eliminacion_gaussiana
 from .metodos.gauss_jordan import gauss_jordan
 from .utils_Chat import get_explanation_from_openai, formatear_steps_para_ia
 
+# Vista para la página de presentación
+def presentacion(request):
+    """
+    Muestra la página de presentación con los botones de navegación.
+    """
+    return render(request, 'MetodosNumericos/frontPage.html')
 
 def resolver_sistema(request):
     if request.method == 'POST':
