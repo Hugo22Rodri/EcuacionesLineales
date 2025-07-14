@@ -1,0 +1,57 @@
+{% extends "MetodosNumericos/interpolaciones.html" %}
+
+{% block content %}
+<div class="glass-panel form-container">
+    <h1 class="header-title mb-4">
+        <i class="fas fa-chart-line me-2"></i>Interpolación Polinomial
+    </h1>
+    
+    <form method="post" class="interpolation-form">
+        {% csrf_token %}
+        
+        <div class="form-section mb-4 p-3 rounded">
+            <h3 class="section-title">
+                <i class="fas fa-cogs me-2"></i>Configuración
+            </h3>
+            <div class="form-group mb-3">
+                {{ form.metodo.label_tag }}
+                {{ form.metodo }}
+            </div>
+        </div>
+        
+        <div class="form-section mb-4 p-3 rounded">
+            <h3 class="section-title">
+                <i class="fas fa-dot-circle me-2"></i>Datos de Entrada
+            </h3>
+            <div class="form-group mb-3">
+                {{ form.puntos.label_tag }}
+                {{ form.puntos }}
+                <small class="form-text text-muted">{{ form.puntos.help_text }}</small>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.funcion_real.label_tag }}
+                        {{ form.funcion_real }}
+                        <small class="form-text text-muted">{{ form.funcion_real.help_text }}</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.rango_grafico.label_tag }}
+                        {{ form.rango_grafico }}
+                        <small class="form-text text-muted">{{ form.rango_grafico.help_text }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg btn-calculate">
+                <i class="fas fa-calculator me-2"></i>Calcular Interpolación
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

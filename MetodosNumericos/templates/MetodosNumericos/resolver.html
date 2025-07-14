@@ -5,17 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resolver Sistema</title>
-    <link rel="stylesheet" href="{% static 'styles1.css' %}">
-    <script src="{% static 'script.js' %}" defer></script>
+    <link rel="icon" type="image/png" href="{% static 'images/calculation.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/calculation.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
 </head>
 <body>
+    <header class="hero-header">
+        <a href="{% url 'MetodosNumericos:frontPage' %}" class="home-button">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+    </header>
     <header class="navbar">
         <div class="logo">
             <img src="https://img.icons8.com/ios-filled/50/ffffff/calculator.png" alt="icono" class="icono">
             <span>Métodos Numéricos</span>
         </div>
     </header>
-
     <section class="hero">
         <div class="hero-content">
             <div class="container">

@@ -15,6 +15,9 @@ def presentacion(request):
     """
     return render(request, 'MetodosNumericos/frontPage.html')
 
+def frontPage(request):
+    return render(request, 'MetodosNumericos/frontPage.html')
+
 def resolver_sistema(request):
     if request.method == 'POST':
         form = MetodoForm(request.POST)

@@ -1,38 +1,68 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bisección | Métodos Numéricos</title>
+    
+    <link rel="icon" type="image/png" href="{% static 'images/calculation.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/calculation.png' %}">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="hero-header">
+        <a href="{% url 'MetodosNumericos:frontPage' %}" class="home-button">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+    </header>
+    <div class="glass-panel">
+        <header class="header">
+            <h1>Método de Bisección</h1>
+            <p>Encuentra la raíz de una función paso a paso</p>
+        </header>
 
-<div class="formulario-container">
-    <h2>Método Bisección</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Calcular</button>
-    </form>
-</div>
+        <div class="formulario-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Calcular</button>
+            </form>
+        </div>
 
-{% if error %}
-    <div class="error" style="color: red; margin-top: 15px;">
-        <p><strong>Error</strong>{{ error }}</p>
+        <div id="spinner" style="display: none;" class="spinner">Calculando...</div>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        {% if pasos %}
+            <h2>Iteraciones</h2>
+            <table>
+                <tr><th>a</th><th>b</th><th>c</th><th>f(c)</th></tr>
+                {% for p in pasos %}
+                <tr><td>{{ p.0 }}</td><td>{{ p.1 }}</td><td>{{ p.2 }}</td><td>{{ p.3 }}</td></tr>
+                {% endfor %}
+            </table>
+
+            <p class="resultado">Raíz aproximada: <strong>{{ pasos|last|slice:'2' }} N/m</strong></p>
+
+            <button id="toggleGraficaBtn">Mostrar Gráfica</button>
+            <img id="graficaImg" src="{{ grafica_url }}" alt="Gráfica de convergencia" width="500px">
+        {% else %}
+            {% if not error %}
+                <p>No se generaron pasos porque la raíz fue detectada de forma directa o el intervalo era demasiado estrecho.</p>
+            {% endif %}
+        {% endif %}
     </div>
-{% endif %}
-
-{% if pasos %}
-    <table>
-        <p>Iteraciones:</p>
-        <tr><th>a</th><th>b</th><th>c</th><th>f(c)</th></tr>
-        {% for p in pasos %}
-        <tr><td>{{ p.0 }}</td><td>{{ p.1 }}</td><td>{{ p.2 }}</td><td>{{ p.3 }}</td></tr>
-        {% endfor %}
-    </table>
-   
-    <p>Raíz aproximada: <strong>{{ pasos|last|slice:'2' }} N/m</strong></p>
-
-    <button id="toggleGraficaBtn">Mostrar Gráfica</button>
-    <img id="graficaImg" src="{{ grafica_url }}" alt="Gráfica de convergencia" width="500px">
 
     <script src="{% static 'js/grafica_toggle.js' %}"></script>
-{% else %}
-    {% if not error %}
-    <p>No se generaron pasos porque la raíz fue detectada de forma directa o el intervalo era demasiado estrecho.</p>
-    {% endif %}
-{% endif %}
+    <script>
+        document.querySelector("form").addEventListener("submit", () => {
+            document.getElementById("spinner").style.display = "block";
+        });
+    </script>
+</body>
+</html>

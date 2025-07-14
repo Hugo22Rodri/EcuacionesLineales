@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
 
+:root {
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --dark-bg: rgba(15, 15, 15, 0.8);
+    --text-light: #ddd;
+    --text-dark: #111;
+}
+
 body {
     font-family: 'Rajdhani', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
     background: #000;
+    color: var(--text-light);
     overflow-x: hidden;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .background {
@@ -20,36 +25,47 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color), var(--secondary-color), var(--primary-color));
     background-size: 400% 400%;
     animation: rgb-background 15s ease infinite;
     opacity: 0.3;
     filter: blur(50px);
+    z-index: -2;
+}
+
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     z-index: -1;
 }
 
-/* Estilos para el encabezado hero */
+/* Header styles */
 .hero-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 50px;
-    padding: 40px 20px;
+    padding: 60px 20px;
     position: relative;
     z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .hero-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 700;
-    color: #00ffff;
+    color: var(--primary-color);
     text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     line-height: 1.2;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -58,58 +74,44 @@ body {
 
 .hero-subtitle {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.5rem;
-    color: #ddd;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text-light);
     line-height: 1.6;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     animation: fadeIn 1.5s ease-out;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
-/* Animaciones específicas */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-}
-
-@keyframes rgb-background {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Cards section */
+.cards-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
 .card {
     width: 350px;
-    background: rgba(15, 15, 15, 0.8);
+    background: var(--dark-bg);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
     perspective: 1000px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 255, 0.2);
 }
 
 .card:hover {
@@ -139,35 +141,22 @@ body {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #00ffff;
+    color: var(--primary-color);
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
 }
 
 .card-description {
     font-size: 16px;
-    color: #ddd;
+    color: var(--text-light);
     margin-bottom: 20px;
     line-height: 1.6;
 }
 
-.card-languages {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 25px;
-}
-
-.html-tag { color: #E44D26; }
-.css-tag { color: #264DE4; }
-.js-tag { color: #F0DB4F; }
-.python-tag { color: #3776AB; }
-.java-tag { color: #007396; }
-.csharp-tag { color: #239120; }
-
 .card-link {
     display: inline-block;
     padding: 12px 24px;
-    background: linear-gradient(45deg, #00ffff, #ff00ff);
-    color: #111;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-dark);
     text-decoration: none;
     border-radius: 25px;
     transition: all 0.3s ease;
@@ -197,4 +186,200 @@ body {
 
 .card-link:hover::before {
     left: 50%;
+}
+
+/* Concepts section */
+.concepts-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.concept-card {
+    background: var(--dark-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.concept-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+}
+
+.concept-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.concept-icon {
+    font-size: 28px;
+    margin-right: 15px;
+    color: var(--primary-color);
+}
+
+.concept-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    margin: 0;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.concept-content {
+    padding: 20px;
+}
+
+.concept-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.concept-formula {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 0 5px 5px 0;
+    margin-top: 20px;
+}
+
+.concept-formula p {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.concept-formula ol, .concept-formula ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.concept-formula li {
+    margin-bottom: 8px;
+}
+
+/* Footer styles */
+.site-footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-footer p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-link {
+    color: var(--text-light);
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes rgb-background {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animaciones para los iconos del título */
+.icon-spin {
+    margin-right: 15px;
+    animation: spin 4s linear infinite;
+}
+
+.icon-pulse {
+    margin-left: 15px;
+    animation: pulse 2s ease infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cards-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        width: 90%;
+    }
+    
+    .concept-card {
+        width: 90%;
+        margin: 0 auto;
+    }
 }

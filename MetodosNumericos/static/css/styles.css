@@ -1,128 +1,256 @@
-/* Estilos del formulario */
-form {
-    background-color: hsl(180, 17%, 98%);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 50%;
-    min-width: 300px;
-    margin-left:0;
-    margin-right: 0; /* Centra el formulario en la página */
+/* === BASE: FUENTE Y FONDO === */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #343a40;
+/* === EFECTO FUTURISTA DE FONDO CON LUZ SUAVE === */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 234, 0.08), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 234, 0.06), transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* === PANEL GLASSMORPHISM === */
+.glass-panel {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 30px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+/* === HEADER FUTURISTA === */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #00ffe0, #ff00ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+    animation: flotar 3s ease-in-out infinite;
+}
+
+.header p {
+    font-size: 1rem;
+    color: #a0a0a0;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* === FORMULARIO === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 input[type="text"],
-input[type="number"] {
-    width: 100%;
+input[type="number"],
+select {
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    background-color: #007bff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    border-radius: 8px;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
     font-size: 1rem;
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+/* === BOTONES === */
+button[type="submit"],
+#toggleGraficaBtn {
+    background: linear-gradient(90deg, #00ffe0, #007bff);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.7);
+    transition: transform 0.2s ease;
 }
 
-/* Estilos de la tabla */
+button:hover {
+    transform: scale(1.05);
+}
+
+/* === MENSAJE DE CARGA === */
+.spinner {
+    text-align: center;
+    margin-top: 15px;
+    color: #ffae00;
+}
+
+/* === TABLA DE RESULTADOS === */
 table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+    border-collapse: collapse;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 th, td {
     padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 th {
-    background-color: #343a40;
+    background-color: #007bff;
     color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f7f7;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Estilos de la gráfica */
+.resultado {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #00ffe0;
+}
+
+/* === GRÁFICA === */
 #graficaImg {
     margin-top: 20px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    display: none; /* Oculta la gráfica por defecto */
+    border: 1px solid #00ffe0;
+    border-radius: 10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 #graficaImg.mostrar {
     display: block;
+    opacity: 1;
 }
 
-/* Estilos del botón para la gráfica */
-#toggleGraficaBtn {
-    background-color: #28a745; /* Un color verde para el botón de la gráfica */
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    margin-top: 10px;
+/* === MODO CLARO === */
+.light-mode {
+    background: linear-gradient(135deg, #fafafa, #eaeaea);
+    color: #222;
+    transition: all 0.3s ease;
 }
 
-#toggleGraficaBtn:hover {
-    background-color: #1e7e34;
+.light-mode .glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    color: #222;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.formulario-con-imagen form {
-    float: left; /* El formulario flota a la izquierda */
-    width: 45%; /* Ajusta el ancho según necesites */
-    margin-right: 1%; /* Espacio entre el formulario y la imagen */
-    /* ... otros estilos del formulario ... */
+.light-mode input,
+.light-mode select {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border-color: #007bff;
+    box-shadow: none;
 }
 
-.formulario-con-imagen .imagen-container {
-    float: left; /* La imagen flota a la izquierda (o 'right' si prefieres) */
-    width: 50%; /* Ajusta el ancho según necesites */
+.light-mode button {
+    background: linear-gradient(90deg, #007bff, #00ffe0);
+    color: #fff;
+    box-shadow: none;
 }
 
-.formulario-con-imagen .imagen-container img {
-    max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Evita espacios extra debajo de la imagen */
+/* === BOTÓN HOME === */
+.home-button {
+    position: relative;
+    background: rgba(0, 123, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    margin: 20px auto;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Opcional: Para que el contenedor 'formulario-con-imagen' se expanda correctamente */
-.formulario-con-imagen::after {
-    content: "";
-    display: table;
-    clear: both;
+.nav-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
 }
-body {
-    background-image: url("../images/portada.jpg"); /* Ruta relativa a la carpeta CSS */
-    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-attachment: fixed; /* Fija la imagen al fondo */
-    background-position: center; /* Centra la imagen */
+
+.home-button i {
+    font-size: 1.2em;
+    color: #00ffe0;
+}
+
+.home-button span {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.home-button:hover {
+    background: rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .home-button {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+.light-mode .home-button i {
+    color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-button {
+        padding: 10px 15px;
+    }
+    .home-button span {
+        display: none;
+    }
 }

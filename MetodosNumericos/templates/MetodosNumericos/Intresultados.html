@@ -1,0 +1,88 @@
+{% extends "MetodosNumericos/interpolaciones.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Debug: Verificar datos recibidos -->
+    <div style="display: none;">
+        <!-- Esto no se mostrará pero ayuda a debuggear -->
+        <p>Método: {{ metodo }}</p>
+        <p>Polinomio Latex: {{ polinomio_latex }}</p>
+        <p>Número de gráficos: {{ graphs|length }}</p>
+        <p>Número de pasos: {{ pasos_latex|length }}</p>
+    </div>
+
+    <div class="alert alert-primary mt-3">
+        <h2 class="text-center">Resultados de Interpolación</h2>
+    </div>
+
+    <!-- Sección del Polinomio -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3>Polinomio Interpolador</h3>
+        </div>
+        <div class="card-body">
+            <h4>Forma Matemática:</h4>
+            <div class="math-container p-3 bg-light mb-3">
+                \[ P(x) = {{ polinomio_latex }} \]
+            </div>
+            
+            <h4>Forma Textual:</h4>
+            <div class="p-3 bg-light">
+                <code>P(x) = {{ polinomio_texto }}</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Pasos -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3>Pasos del Método {{ metodo }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="list-group">
+                {% for paso in pasos_latex %}
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <span class="badge bg-secondary me-2">{{ forloop.counter }}</span>
+                        <div class="w-100">
+                            \[ {{ paso }} \]
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Gráficos -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3>Gráficos Resultantes</h3>
+        </div>
+        <div class="card-body">
+            {% for graph in graphs %}
+            <div class="mb-4 text-center">
+                <img src="data:image/png;base64,{{ graph }}" class="img-fluid border rounded">
+            </div>
+            {% empty %}
+            <div class="alert alert-warning">
+                No se generaron gráficos
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Script para forzar renderizado de MathJax -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof MathJax !== 'undefined') {
+        MathJax.typesetPromise().catch(function(err) {
+            console.error('Error en MathJax:', err);
+        });
+    } else {
+        console.warn('MathJax no está cargado');
+    }
+});
+</script>
+{% endblock %}
