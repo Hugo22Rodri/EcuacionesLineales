@@ -10,10 +10,15 @@ from MetodosNumericos import views_int
 app_name = 'MetodosNumericos'
 
 urlpatterns = [
+    #Paginas de inicio
     path('', views.presentacion, name='portada'),
-    path('calculo_B/', calcular, name='calculo_B'),
-    path('api/biseccion/', BiseccionAPI.as_view(), name='biseccion_api'),
+    path('principal', views.frontPage, name='frontPage'), 
+
+    # Paginas de metodos numericos
     path('resolver/', views.resolver_sistema, name='resolver'),
-    path('Int', views_int.index, name='interpolaciones'),
-    path('Principal', views.frontPage, name='frontPage'),  
+    path('Interpolaciones', views_int.index, name='interpolaciones'),
+    path('calculo_biseccion/', calcular, name='calculo_B'),
+    
+    # APIs
+    path('api/biseccion/', BiseccionAPI.as_view(), name='biseccion_api'),
 ]
