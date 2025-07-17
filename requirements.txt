@@ -1,9 +1,11 @@
 Django==5.2.1
-matplotlib==3.10.3
-numpy==1.23.5
-sympy==1.14.0
-python-dotenv==1.1.1
-openai==0.27.0
 djangorestframework==3.16.0
-
+matplotlib==3.10.3
+numpy==2.2.6
+openai==1.93.0
+pandas==2.2.3
+pillow==11.2.1
+psycopg2-binary==2.9.10
 python-decouple==3.8
+python-dotenv==1.1.1
+sympy==1.14.0
